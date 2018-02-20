@@ -15,7 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        setupMainWindow()
+        
         return true
     }
 
@@ -41,6 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-
+    private func setupMainWindow() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        if let window = window {
+            let mainViewController = ViewController()
+            let navigationController = UINavigationController(rootViewController: mainViewController)
+            
+            window.rootViewController = navigationController
+            window.makeKeyAndVisible()
+        }
+    }
 }
 
