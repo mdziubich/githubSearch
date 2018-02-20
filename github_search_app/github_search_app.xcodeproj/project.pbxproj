@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5A844763203CB09500A869ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844762203CB09500A869ED /* AppDelegate.swift */; };
-		5A844765203CB09500A869ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844764203CB09500A869ED /* ViewController.swift */; };
+		5A844765203CB09500A869ED /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844764203CB09500A869ED /* SearchViewController.swift */; };
 		5A84476A203CB09500A869ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A844769203CB09500A869ED /* Assets.xcassets */; };
 		5A84476D203CB09500A869ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A84476B203CB09500A869ED /* LaunchScreen.storyboard */; };
 		5A844778203CB09500A869ED /* github_search_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844777203CB09500A869ED /* github_search_appTests.swift */; };
+		5AC8FB6F203CB82F0098C3AB /* SearchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC8FB6E203CB82F0098C3AB /* SearchContentView.swift */; };
 		B93E142B8360958CD4367FDC /* Pods_github_search_app.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBD9ADFEB7032A013E181204 /* Pods_github_search_app.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,13 +30,14 @@
 		2B18B31EE200298D09310C65 /* Pods-github_search_app.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-github_search_app.debug.xcconfig"; path = "Pods/Target Support Files/Pods-github_search_app/Pods-github_search_app.debug.xcconfig"; sourceTree = "<group>"; };
 		5A84475F203CB09500A869ED /* github_search_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = github_search_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A844762203CB09500A869ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5A844764203CB09500A869ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5A844764203CB09500A869ED /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		5A844769203CB09500A869ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5A84476C203CB09500A869ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5A84476E203CB09500A869ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A844773203CB09500A869ED /* github_search_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = github_search_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A844777203CB09500A869ED /* github_search_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = github_search_appTests.swift; sourceTree = "<group>"; };
 		5A844779203CB09500A869ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5AC8FB6E203CB82F0098C3AB /* SearchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchContentView.swift; sourceTree = "<group>"; };
 		B175C1860EF188E712871412 /* Pods-github_search_app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-github_search_app.release.xcconfig"; path = "Pods/Target Support Files/Pods-github_search_app/Pods-github_search_app.release.xcconfig"; sourceTree = "<group>"; };
 		DBD9ADFEB7032A013E181204 /* Pods_github_search_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_github_search_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -95,9 +97,6 @@
 				5AC8FB6B203CB78C0098C3AB /* View Controllers */,
 				5AC8FB6A203CB7840098C3AB /* View Models */,
 				5AC8FB69203CB77E0098C3AB /* Models */,
-				5A844764203CB09500A869ED /* ViewController.swift */,
-				5A844769203CB09500A869ED /* Assets.xcassets */,
-				5A84476B203CB09500A869ED /* LaunchScreen.storyboard */,
 				5A84476E203CB09500A869ED /* Info.plist */,
 			);
 			path = github_search_app;
@@ -129,6 +128,7 @@
 		5AC8FB6B203CB78C0098C3AB /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5A844764203CB09500A869ED /* SearchViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -136,6 +136,7 @@
 		5AC8FB6C203CB7980098C3AB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5AC8FB6E203CB82F0098C3AB /* SearchContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -144,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				5A844762203CB09500A869ED /* AppDelegate.swift */,
+				5A844769203CB09500A869ED /* Assets.xcassets */,
+				5A84476B203CB09500A869ED /* LaunchScreen.storyboard */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -326,7 +329,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A844765203CB09500A869ED /* ViewController.swift in Sources */,
+				5AC8FB6F203CB82F0098C3AB /* SearchContentView.swift in Sources */,
+				5A844765203CB09500A869ED /* SearchViewController.swift in Sources */,
 				5A844763203CB09500A869ED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

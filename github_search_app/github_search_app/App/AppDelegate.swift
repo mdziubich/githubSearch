@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupMainWindow() {
         window = UIWindow(frame: UIScreen.main.bounds)
         if let window = window {
-            let mainViewController = ViewController()
+            let mainViewController = SearchViewController()
             let navigationController = UINavigationController(rootViewController: mainViewController)
             
             window.rootViewController = navigationController
