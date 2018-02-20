@@ -20,7 +20,7 @@ enum GithubAPI: TargetType {
     var path: String {
         switch self {
         case .searchUser: return "search/users"
-        case .searchRepo: return ""
+        case .searchRepo: return "search/repositories"
         }
     }
     
@@ -34,11 +34,10 @@ enum GithubAPI: TargetType {
     
     var parameters: [String: Any]? {
         switch self {
-        case .searchUser(let searchedTerm):
+        case .searchUser(let searchedTerm),
+             .searchRepo(let searchedTerm):
             return ["q": searchedTerm,
                     "order": "asc"]
-        case .searchRepo:
-            return nil
         }
     }
     
