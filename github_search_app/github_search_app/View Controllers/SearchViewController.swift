@@ -21,22 +21,26 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         title = "Main"
-        
+        setupTableView()
+    }
+    
+    private func setupTableView() {
         contentView.resultsTableView.dataSource = self
+        contentView.resultsTableView.register(SingleSearchResultTableViewCell.self, forCellReuseIdentifier: SingleSearchResultTableViewCell.reuseId)
     }
 }
 
 extension SearchViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.searchResultsViewModels.count
+        return 20//viewModel.searchResultsViewModels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SingleSearchResultTableViewCell.reuseId, for: indexPath) as? SingleSearchResultTableViewCell else {
             return UITableViewCell()
         }
-        
+        cell.backgroundColor = .blue
         return cell
     }
 }

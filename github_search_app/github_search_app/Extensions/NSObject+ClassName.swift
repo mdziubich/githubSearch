@@ -1,16 +1,16 @@
 //
-//  UITableViewCell+ReuseId.swift
+//  NSObject+ClassName.swift
 //  github_search_app
 //
 //  Created by Małgorzata Dziubich on 20/02/2018.
 //  Copyright © 2018 Małgorzata Dziubich. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-extension UITableViewCell {
+extension NSObject {
     
-    static var reuseId: String {
-        return className
+    static var className: String {
+        return String(describing: self)
     }
 }
