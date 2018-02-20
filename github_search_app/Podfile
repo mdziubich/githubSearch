@@ -1,15 +1,11 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'github_search_app' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for github_search_app
-
-  target 'github_search_appTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
+target 'github_search_app' do
+    pod 'SnapKit'
+    pod 'RxSwift'
+    pod 'AlamofireImage'
+    pod 'Moya'
 end
