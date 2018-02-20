@@ -8,6 +8,11 @@
 
 final class SearchViewModel {
     
+    private lazy var searchService = GithubSearchService()
+    
     var searchResultsViewModels = [SingleSearchResultViewModel]()
     
+    func searchForResults(with key: String) {
+        searchService.searchForUsersAndRepo(with: key)
+    }
 }

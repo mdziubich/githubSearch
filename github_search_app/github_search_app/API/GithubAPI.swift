@@ -19,7 +19,7 @@ enum GithubAPI: TargetType {
     
     var path: String {
         switch self {
-        case .searchUser: return ""
+        case .searchUser: return "search/users"
         case .searchRepo: return ""
         }
     }
@@ -32,9 +32,25 @@ enum GithubAPI: TargetType {
         return Data()
     }
     
+    var parameters: [String: Any]? {
+        switch self {
+        case .searchUser(let searchedTerm):
+            return ["q": searchedTerm,
+                    "order": "asc"]
+        case .searchRepo:
+            return nil
+        }
+    }
+    
+    var parameterEncoding: ParameterEncoding {
+        return URLEncoding.default
+    }
+    
     var task: Task {
-        //TODO: change it if there will be some parameters
-        return .requestPlain
+        guard let parametres = parameters else {
+            return .requestPlain
+        }
+        return .requestParameters(parameters: parametres, encoding: parameterEncoding)
     }
     
     var headers: [String: String]? {

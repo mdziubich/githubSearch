@@ -24,6 +24,11 @@ final class SearchViewController: UIViewController {
         setupTableView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel.searchForResults(with: "mdziubich")
+    }
+    
     private func setupTableView() {
         contentView.resultsTableView.dataSource = self
         contentView.resultsTableView.register(SingleSearchResultTableViewCell.self, forCellReuseIdentifier: SingleSearchResultTableViewCell.reuseId)

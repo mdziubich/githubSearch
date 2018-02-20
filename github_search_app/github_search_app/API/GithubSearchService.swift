@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+final class GithubSearchService {
+    
+    lazy var apiProvider = GithubAPIProvider<GithubAPI>()
+    
+    func searchForUsersAndRepo(with key: String) {
+        apiProvider.request(target: .searchUser(key: key), success: { result in
+            print(result)
+        }, error: { error in
+            print(error)
+        })
+    }
+}
