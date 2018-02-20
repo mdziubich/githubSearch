@@ -90,7 +90,11 @@
 		5A844761203CB09500A869ED /* github_search_app */ = {
 			isa = PBXGroup;
 			children = (
-				5A844762203CB09500A869ED /* AppDelegate.swift */,
+				5AC8FB6D203CB7A00098C3AB /* App */,
+				5AC8FB6C203CB7980098C3AB /* Views */,
+				5AC8FB6B203CB78C0098C3AB /* View Controllers */,
+				5AC8FB6A203CB7840098C3AB /* View Models */,
+				5AC8FB69203CB77E0098C3AB /* Models */,
 				5A844764203CB09500A869ED /* ViewController.swift */,
 				5A844769203CB09500A869ED /* Assets.xcassets */,
 				5A84476B203CB09500A869ED /* LaunchScreen.storyboard */,
@@ -106,6 +110,42 @@
 				5A844779203CB09500A869ED /* Info.plist */,
 			);
 			path = github_search_appTests;
+			sourceTree = "<group>";
+		};
+		5AC8FB69203CB77E0098C3AB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5AC8FB6A203CB7840098C3AB /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		5AC8FB6B203CB78C0098C3AB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		5AC8FB6C203CB7980098C3AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5AC8FB6D203CB7A00098C3AB /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5A844762203CB09500A869ED /* AppDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		601A22F59FEAD0509E93D29C /* Pods */ = {
