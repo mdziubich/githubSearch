@@ -44,6 +44,7 @@
 		5A20D63C203F47830098BBD8 /* SearchResultDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDisplayable.swift; sourceTree = "<group>"; };
 		5A20D63E203F47AA0098BBD8 /* UserSearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchResultModel.swift; sourceTree = "<group>"; };
 		5A20D640203F47B80098BBD8 /* RepoSearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSearchResultModel.swift; sourceTree = "<group>"; };
+		5A73AB10203F6F71005FA200 /* github_search_app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "github_search_app-Bridging-Header.h"; sourceTree = "<group>"; };
 		5A84475F203CB09500A869ED /* github_search_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = github_search_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A844762203CB09500A869ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5A844764203CB09500A869ED /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 				5AC8FB69203CB77E0098C3AB /* Models */,
 				5AC8FB76203CBBE80098C3AB /* Extensions */,
 				5A84476E203CB09500A869ED /* Info.plist */,
+				5A73AB10203F6F71005FA200 /* github_search_app-Bridging-Header.h */,
 			);
 			path = github_search_app;
 			sourceTree = "<group>";
@@ -265,6 +267,7 @@
 				TargetAttributes = {
 					5A84475E203CB09500A869ED = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					5A844772203CB09500A869ED = {
@@ -549,12 +552,15 @@
 			baseConfigurationReference = 2B18B31EE200298D09310C65 /* Pods-github_search_app.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X229WUE39;
 				INFOPLIST_FILE = github_search_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mdziubich.github-search-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "github_search_app/github_search_app-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -565,12 +571,14 @@
 			baseConfigurationReference = B175C1860EF188E712871412 /* Pods-github_search_app.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6X229WUE39;
 				INFOPLIST_FILE = github_search_app/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mdziubich.github-search-app";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "github_search_app/github_search_app-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
