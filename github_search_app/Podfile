@@ -10,4 +10,5 @@ target 'github_search_app' do
     pod 'Moya'
     pod 'Moya-ObjectMapper/RxSwift'
     pod 'RxCocoa'
+    pod 'UIScrollView-InfiniteScroll'
 end
