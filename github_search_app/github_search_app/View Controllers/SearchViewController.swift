@@ -6,13 +6,16 @@
 //  Copyright © 2018 Małgorzata Dziubich. All rights reserved.
 //
 
+import RxCocoa
+import RxSwift
 import UIKit
 
 final class SearchViewController: UIViewController {
 
     private lazy var contentView = SearchContentView()
     private lazy var viewModel = SearchViewModel()
-        
+    private let disposeBag = DisposeBag()
+    
     override func loadView() {
         view = contentView
     }
@@ -21,16 +24,7 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
         setupNavigatinBar()
         setupTableView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        viewModel.searchForResults(with: "ray")
-    }
-    
-    private func setupTableView() {
-        contentView.resultsTableView.dataSource = self
-        contentView.resultsTableView.register(SingleSearchResultTableViewCell.self, forCellReuseIdentifier: SingleSearchResultTableViewCell.reuseId)
+        setupObservables()
     }
     
     private func setupNavigatinBar() {
@@ -39,22 +33,41 @@ final class SearchViewController: UIViewController {
         edgesForExtendedLayout = []
     }
     
+    private func setupTableView() {
+        contentView.resultsTableView.dataSource = self
+        contentView.resultsTableView.register(SingleSearchResultTableViewCell.self,
+                                              forCellReuseIdentifier: SingleSearchResultTableViewCell.reuseId)
+    }
+    
     private func setupObservables() {
+        contentView.searchInputTextField.rx.text.asObservable()
+            .subscribe(onNext: { [weak self] (keyToSearch) in
+               self?.viewModel.searchForResults(with: keyToSearch)
+            })
+            .disposed(by: disposeBag)
         
+        viewModel.searchResultsViewModels.asObservable()
+            .subscribe(onNext: { [weak self] _ in
+                self?.contentView.resultsTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 }
 
 extension SearchViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20//viewModel.searchResultsViewModels.count
+        return viewModel.searchResultsViewModels.value.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SingleSearchResultTableViewCell.reuseId, for: indexPath) as? SingleSearchResultTableViewCell else {
             return UITableViewCell()
         }
-        cell.backgroundColor = .blue
+        let cellViewModel = viewModel.searchResultsViewModels.value[indexPath.row]
+        
+        cell.setup(with: cellViewModel)
+        cell.backgroundColor = .blue //TODO: change
         return cell
     }
 }

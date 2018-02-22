@@ -10,4 +10,9 @@ import Foundation
 
 final class SingleSearchResultViewModel {
     
+    let title: String
+    
+    init(from model: SearchResultDisplayable) {
+        title = model.name
+    }
 }

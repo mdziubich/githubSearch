@@ -9,4 +9,5 @@ target 'github_search_app' do
     pod 'AlamofireImage'
     pod 'Moya'
     pod 'Moya-ObjectMapper/RxSwift'
+    pod 'RxCocoa'
 end

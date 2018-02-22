@@ -6,15 +6,26 @@
 //  Copyright © 2018 Małgorzata Dziubich. All rights reserved.
 //
 
+import RxSwift
+
 final class SearchViewModel {
     
     private lazy var searchService = GithubSearchService()
     
-    var searchResultsViewModels = [SingleSearchResultViewModel]()
+    var searchResultsViewModels = Variable<[SingleSearchResultViewModel]>([SingleSearchResultViewModel]())
     
-    func searchForResults(with key: String) {
-        searchService.searchForUsersAndRepo(by: key) { (users, repos, error) in
+    func searchForResults(with key: String?) {
+        guard let textSearch = key else {
+            clearSearchedUsersAndRepos()
+            return
+        }
+        
+        searchService.searchForUsersAndRepo(by: textSearch) { (users, repos, error) in
             
         }
+    }
+    
+    private func clearSearchedUsersAndRepos() {
+        searchResultsViewModels.value.removeAll()
     }
 }
