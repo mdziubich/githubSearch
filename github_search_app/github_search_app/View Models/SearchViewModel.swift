@@ -13,6 +13,8 @@ final class SearchViewModel {
     var searchResultsViewModels = [SingleSearchResultViewModel]()
     
     func searchForResults(with key: String) {
-        searchService.searchForUsersAndRepo(with: key)
+        searchService.searchForUsersAndRepo(by: key) { (users, repos, error) in
+            
+        }
     }
 }

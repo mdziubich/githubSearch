@@ -26,7 +26,7 @@ final class SearchViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.searchForResults(with: "mdziubich")
+        viewModel.searchForResults(with: "ray")
     }
     
     private func setupTableView() {

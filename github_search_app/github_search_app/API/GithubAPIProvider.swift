@@ -16,15 +16,19 @@ final class GithubAPIProvider<T: TargetType>: MoyaProvider<T> {
     }
     
     func request(target: T,
-                 success successCallback: @escaping (Any?) -> Void,
+                 success successCallback: @escaping ([String: Any]?) -> Void,
                  error errorCallback: @escaping (Error) -> Void) {
         
         request(target) { (result) in
             switch result {
             case .success(let response):
-                print(response)
+                guard let responseDict = try? response.mapJSON() as? [String: Any] else {
+                    successCallback(nil)
+                    return
+                }
+                successCallback(responseDict)
             case .failure(let moyaError):
-                print(moyaError)
+                errorCallback(moyaError)
             }
         }
     }

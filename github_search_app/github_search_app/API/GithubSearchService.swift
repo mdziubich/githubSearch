@@ -1,3 +1,4 @@
+
 //
 //  GithubSearchService.swift
 //  github_search_app
@@ -21,17 +22,32 @@ final class GithubSearchService {
      In rare situations when a query exceeds the time limit,
      the API returns all matches that were found prior to the timeout.
     */
-    func searchForUsersAndRepo(with key: String) {
-        apiProvider.request(target: .searchUser(key: key), success: { result in
-            print(result)
+    func searchForUsersAndRepo(by key: String, completion: @escaping (SearchedUsers?, SearchedRepos?, Error?) -> Void) {
+        apiProvider.request(target: .searchUser(key: key), success: {  responseDict in
+            guard let responseDict = responseDict else {
+                return
+            }
+            let users = try? SearchedUsers(JSON: responseDict)
+            
+            self.searchForRepos(by: key, foundUsers: users, completion: completion)
         }, error: { error in
-            print(error)
+            completion(nil, nil, error)
         })
         
-        apiProvider.request(target: .searchRepo(key: key), success: { result in
-            print(result)
+    }
+    
+    private func searchForRepos(by key: String,
+                                foundUsers: SearchedUsers?,
+                                completion: @escaping (SearchedUsers?, SearchedRepos?, Error?) -> Void) {
+        apiProvider.request(target: .searchRepo(key: key), success: { responseDict in
+            guard let responseDict = responseDict else {
+                return
+            }
+            let repos = try? SearchedRepos(JSON: responseDict)
+            
+            completion(foundUsers, repos, nil)
         }, error: { error in
-            print(error)
+            completion(nil, nil, error)
         })
     }
 }
