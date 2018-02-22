@@ -67,7 +67,6 @@ extension SearchViewController: UITableViewDataSource {
         let cellViewModel = viewModel.searchResultsViewModels.value[indexPath.row]
         
         cell.setup(with: cellViewModel)
-        cell.backgroundColor = .blue //TODO: change
         return cell
     }
 }

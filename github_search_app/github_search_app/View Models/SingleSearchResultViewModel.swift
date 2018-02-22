@@ -12,10 +12,12 @@ final class SingleSearchResultViewModel {
     
     let id: Int
     let title: String
+    let isSelectable: Bool
     
     init(from model: SearchResultDisplayable) {
-        id = model.id
-        title = model.name
+        id              = model.id
+        title           = model.name
+        isSelectable    = model.type.hasDetailsToDisplay
     }
     
     static func searchResultViewModels(from models: [SearchResultDisplayable]) -> [SingleSearchResultViewModel] {

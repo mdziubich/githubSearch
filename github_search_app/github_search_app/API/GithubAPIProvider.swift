@@ -11,8 +11,8 @@ import Moya
 final class GithubAPIProvider<T: TargetType>: MoyaProvider<T> {
     
     init() {
-//        super.init(plugins: [])
-        super.init(plugins: [NetworkLoggerPlugin(verbose: true)])
+        super.init(plugins: [])
+//        super.init(plugins: [NetworkLoggerPlugin(verbose: true)])
     }
     
     func request(target: T,
