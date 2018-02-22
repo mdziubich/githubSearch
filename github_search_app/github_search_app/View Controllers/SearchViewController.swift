@@ -19,19 +19,28 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
-        title = "Main"
+        setupNavigatinBar()
         setupTableView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        viewModel.searchForResults(with: "ray")
+//        viewModel.searchForResults(with: "ray")
     }
     
     private func setupTableView() {
         contentView.resultsTableView.dataSource = self
         contentView.resultsTableView.register(SingleSearchResultTableViewCell.self, forCellReuseIdentifier: SingleSearchResultTableViewCell.reuseId)
+    }
+    
+    private func setupNavigatinBar() {
+        title = "Main"
+        extendedLayoutIncludesOpaqueBars = false
+        edgesForExtendedLayout = []
+    }
+    
+    private func setupObservables() {
+        
     }
 }
 

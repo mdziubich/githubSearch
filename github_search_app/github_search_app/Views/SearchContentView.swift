@@ -13,6 +13,7 @@ final class SearchContentView: UIView {
     private let singleCellHeight: CGFloat = 50.0
     
     let resultsTableView = UITableView()
+    let searchInputTextField = UITextField()
     
     init() {
         super.init(frame: CGRect.zero)
@@ -27,16 +28,30 @@ final class SearchContentView: UIView {
     
     private func addSubviews() {
         addSubview(resultsTableView)
+        addSubview(searchInputTextField)
     }
     
     private func setupStyling() {
+        searchInputTextField.backgroundColor = .green
+        searchInputTextField.placeholder = "Search for users and repos..."
+        searchInputTextField.clearButtonMode = .whileEditing
+        searchInputTextField.autocorrectionType = .no
+        searchInputTextField.autocapitalizationType = .none
+        
         resultsTableView.rowHeight = singleCellHeight
         resultsTableView.backgroundColor = .green
+        resultsTableView.separatorStyle = .none
     }
     
     private func setupConstraints() {
+        searchInputTextField.snp.makeConstraints { make in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(singleCellHeight)
+        }
+        
         resultsTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(searchInputTextField.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
         }
     }
 }
