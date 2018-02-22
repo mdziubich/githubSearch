@@ -38,7 +38,7 @@ final class SearchViewModel {
         }
     }
     
-    private func csdlearSearchedUsersAndRepos() {
+    private func clearSearchedUsersAndRepos() {
         searchResultsViewModels.value.removeAll()
     }
 }
