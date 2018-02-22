@@ -51,6 +51,22 @@ final class SearchViewController: UIViewController {
                 self?.contentView.resultsTableView.reloadData()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.error.asObservable()
+            .subscribe(onNext: handleError)
+            .disposed(by: disposeBag)
+    }
+    
+    private func handleError(_ error: Error?) {
+        guard let error = error else {
+            return
+        }
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }
 

@@ -32,7 +32,7 @@ final class SearchContentView: UIView {
     }
     
     private func setupStyling() {
-        searchInputTextField.backgroundColor = .green
+        searchInputTextField.backgroundColor = .white
         searchInputTextField.placeholder = "Search for users and repos..."
         searchInputTextField.clearButtonMode = .whileEditing
         searchInputTextField.autocorrectionType = .no

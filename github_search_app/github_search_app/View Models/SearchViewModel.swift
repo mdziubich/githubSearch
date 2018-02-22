@@ -32,13 +32,13 @@ final class SearchViewModel {
                 resultsToDisplay.append(contentsOf: SingleSearchResultViewModel.searchResultViewModels(from: repos))
             }
             
-            let resultsSortedById = resultsToDisplay.sorted { $0.id > $1.id }
+            let resultsSortedById = resultsToDisplay.sorted { $0.id < $1.id }
             
             self?.searchResultsViewModels.value = resultsSortedById
         }
     }
     
-    private func clearSearchedUsersAndRepos() {
+    private func csdlearSearchedUsersAndRepos() {
         searchResultsViewModels.value.removeAll()
     }
 }
