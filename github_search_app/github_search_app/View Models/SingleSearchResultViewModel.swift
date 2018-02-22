@@ -10,9 +10,22 @@ import Foundation
 
 final class SingleSearchResultViewModel {
     
+    let id: Int
     let title: String
     
     init(from model: SearchResultDisplayable) {
+        id = model.id
         title = model.name
+    }
+    
+    static func searchResultViewModels(from models: [SearchResultDisplayable]) -> [SingleSearchResultViewModel] {
+        var results = [SingleSearchResultViewModel]()
+        
+        models.forEach {
+            let result = SingleSearchResultViewModel(from: $0)
+            
+            results.append(result)
+        }
+        return results
     }
 }
