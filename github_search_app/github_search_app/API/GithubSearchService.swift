@@ -7,11 +7,13 @@
 //  Copyright © 2018 Małgorzata Dziubich. All rights reserved.
 //
 
-import Foundation
+import Moya
 
-final class GithubSearchService {
+final class GithubSearchService: CancellableCachedRequestsHandling {
     
-    lazy var apiProvider = GithubAPIProvider<GithubAPI>()
+    private lazy var apiProvider = GithubAPIProvider<GithubAPI>()
+    
+    var cachedRequests = [String: Cancellable]()
     
     //For unauthenticated requests, the rate limit allows you to make up to 10 requests per minute.
     
@@ -23,7 +25,10 @@ final class GithubSearchService {
      the API returns all matches that were found prior to the timeout.
     */
     func searchForUsersAndRepo(by key: String, completion: @escaping (SearchedUsers?, SearchedRepos?, Error?) -> Void) {
-        apiProvider.request(target: .searchUser(key: key), success: {  responseDict in
+        //first cancell previous made requests
+        cancelCachedRequests()
+        
+        let usersSearchRequest = apiProvider.request(target: .searchUser(key: key), success: {  responseDict in
             guard let responseDict = responseDict else {
                 return
             }
@@ -34,12 +39,13 @@ final class GithubSearchService {
             completion(nil, nil, error)
         })
         
+        cachedRequests["users:\(key)"] = usersSearchRequest
     }
     
     private func searchForRepos(by key: String,
                                 foundUsers: SearchedUsers?,
                                 completion: @escaping (SearchedUsers?, SearchedRepos?, Error?) -> Void) {
-        apiProvider.request(target: .searchRepo(key: key), success: { responseDict in
+        let repoSearchRequest = apiProvider.request(target: .searchRepo(key: key), success: { responseDict in
             guard let responseDict = responseDict else {
                 return
             }
@@ -49,5 +55,7 @@ final class GithubSearchService {
         }, error: { error in
             completion(nil, nil, error)
         })
+        
+        cachedRequests["repos:\(key)"] = repoSearchRequest
     }
 }

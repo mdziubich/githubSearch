@@ -16,6 +16,7 @@
 		5A84476A203CB09500A869ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A844769203CB09500A869ED /* Assets.xcassets */; };
 		5A84476D203CB09500A869ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A84476B203CB09500A869ED /* LaunchScreen.storyboard */; };
 		5A844778203CB09500A869ED /* github_search_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844777203CB09500A869ED /* github_search_appTests.swift */; };
+		5A9FC728203F691800DF1F22 /* CancellableCachedRequestsHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9FC727203F691800DF1F22 /* CancellableCachedRequestsHandling.swift */; };
 		5AC41A83203CBFD100AE2028 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */; };
 		5AC41A85203CC16400AE2028 /* GithubAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */; };
 		5AC41A87203CC26A00AE2028 /* GithubSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */; };
@@ -52,6 +53,7 @@
 		5A844773203CB09500A869ED /* github_search_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = github_search_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A844777203CB09500A869ED /* github_search_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = github_search_appTests.swift; sourceTree = "<group>"; };
 		5A844779203CB09500A869ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5A9FC727203F691800DF1F22 /* CancellableCachedRequestsHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableCachedRequestsHandling.swift; sourceTree = "<group>"; };
 		5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
 		5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIProvider.swift; sourceTree = "<group>"; };
 		5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchService.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				5AC8FB70203CBA260098C3AB /* SearchViewModel.swift */,
 				5AC8FB72203CBA630098C3AB /* SingleSearchResultViewModel.swift */,
+				5A9FC727203F691800DF1F22 /* CancellableCachedRequestsHandling.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				5A20D63D203F47830098BBD8 /* SearchResultDisplayable.swift in Sources */,
 				5A844765203CB09500A869ED /* SearchViewController.swift in Sources */,
 				5AC41A85203CC16400AE2028 /* GithubAPIProvider.swift in Sources */,
+				5A9FC728203F691800DF1F22 /* CancellableCachedRequestsHandling.swift in Sources */,
 				5A20D63F203F47AA0098BBD8 /* UserSearchResultModel.swift in Sources */,
 				5AC8FB71203CBA260098C3AB /* SearchViewModel.swift in Sources */,
 				5AC8FB78203CBC020098C3AB /* UITableViewCell+ReuseId.swift in Sources */,

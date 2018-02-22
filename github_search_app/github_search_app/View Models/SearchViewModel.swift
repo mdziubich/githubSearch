@@ -16,7 +16,8 @@ final class SearchViewModel {
     var error = Variable<Error?>(nil)
     
     func searchForResults(with key: String?) {
-        guard let textSearch = key else {
+        guard let textSearch = key,
+            !textSearch.isEmpty else {
             clearSearchedUsersAndRepos()
             return
         }
