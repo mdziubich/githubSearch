@@ -19,6 +19,8 @@
 		5A9FC728203F691800DF1F22 /* CancellableCachedRequestsHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9FC727203F691800DF1F22 /* CancellableCachedRequestsHandling.swift */; };
 		5AB80EA72040902E0049E505 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EA62040902E0049E505 /* SearchTextField.swift */; };
 		5AB80EAA204090CE0049E505 /* GlobalLayoutElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EA9204090CE0049E505 /* GlobalLayoutElements.swift */; };
+		5AB80EAC2040A22A0049E505 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EAB2040A22A0049E505 /* UserDetailsViewController.swift */; };
+		5AB80EAE2040A2F40049E505 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EAD2040A2F40049E505 /* UserDetailsView.swift */; };
 		5AC41A83203CBFD100AE2028 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */; };
 		5AC41A85203CC16400AE2028 /* GithubAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */; };
 		5AC41A87203CC26A00AE2028 /* GithubSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */; };
@@ -59,6 +61,8 @@
 		5A9FC727203F691800DF1F22 /* CancellableCachedRequestsHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableCachedRequestsHandling.swift; sourceTree = "<group>"; };
 		5AB80EA62040902E0049E505 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		5AB80EA9204090CE0049E505 /* GlobalLayoutElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalLayoutElements.swift; sourceTree = "<group>"; };
+		5AB80EAB2040A22A0049E505 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		5AB80EAD2040A2F40049E505 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 		5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
 		5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIProvider.swift; sourceTree = "<group>"; };
 		5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchService.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				5A844764203CB09500A869ED /* SearchViewController.swift */,
+				5AB80EAB2040A22A0049E505 /* UserDetailsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				5AC8FB6E203CB82F0098C3AB /* SearchContentView.swift */,
 				5AC8FB74203CBB810098C3AB /* SingleSearchResultTableViewCell.swift */,
 				5AB80EA62040902E0049E505 /* SearchTextField.swift */,
+				5AB80EAD2040A2F40049E505 /* UserDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -413,7 +419,9 @@
 				5AC8FB73203CBA630098C3AB /* SingleSearchResultViewModel.swift in Sources */,
 				5A20D63D203F47830098BBD8 /* SearchResultDisplayable.swift in Sources */,
 				5A844765203CB09500A869ED /* SearchViewController.swift in Sources */,
+				5AB80EAE2040A2F40049E505 /* UserDetailsView.swift in Sources */,
 				5AC41A85203CC16400AE2028 /* GithubAPIProvider.swift in Sources */,
+				5AB80EAC2040A22A0049E505 /* UserDetailsViewController.swift in Sources */,
 				5A9FC728203F691800DF1F22 /* CancellableCachedRequestsHandling.swift in Sources */,
 				5AB80EAA204090CE0049E505 /* GlobalLayoutElements.swift in Sources */,
 				5A20D63F203F47AA0098BBD8 /* UserSearchResultModel.swift in Sources */,

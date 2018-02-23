@@ -36,6 +36,7 @@ final class SearchViewController: UIViewController {
     
     private func setupTableView() {
         contentView.resultsTableView.dataSource = self
+        contentView.resultsTableView.delegate = self
         contentView.resultsTableView.register(SingleSearchResultTableViewCell.self,
                                               forCellReuseIdentifier: SingleSearchResultTableViewCell.reuseId)
         contentView.resultsTableView.addInfiniteScroll { [weak self] (_) -> Void in
@@ -109,5 +110,22 @@ extension SearchViewController: UITableViewDataSource {
         
         cell.setup(with: cellViewModel)
         return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cellViewModel = viewModel.searchResultsViewModels.value[indexPath.row]
+        
+        guard cellViewModel.isSelectable else {
+            return
+        }
+        let userDetailsViewController = UserDetailsViewController()
+        let nv = UINavigationController()
+        nv.viewControllers = [userDetailsViewController]
+        
+        
+        navigationController?.present(nv, animated: true, completion: nil)
     }
 }
