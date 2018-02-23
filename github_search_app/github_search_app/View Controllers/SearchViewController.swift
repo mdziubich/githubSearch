@@ -63,15 +63,26 @@ final class SearchViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        viewModel.error.asObservable()
-            .subscribe(onNext: handleError)
+        viewModel.loadingState.asObservable()
+            .subscribe(onNext: handleLoading)
             .disposed(by: disposeBag)
     }
     
-    private func handleError(_ error: Error?) {
-        guard let error = error else {
+    private func handleLoading(state: LoadingState) {
+        switch state {
+        case .initial:
             return
+        case .loading:
+            contentView.showLoadingIndicator()
+        case .content:
+            contentView.hideLoadingIndicator()
+        case .error(let error):
+            contentView.hideLoadingIndicator()
+            handleError(error)
         }
+    }
+    
+    private func handleError(_ error: Error) {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] _ in

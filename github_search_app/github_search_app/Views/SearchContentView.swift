@@ -11,6 +11,7 @@ import SnapKit
 final class SearchContentView: UIView {
     
     private let singleCellHeight: CGFloat = 50.0
+    private let activityIndicator = UIActivityIndicatorView()
     
     let resultsTableView = UITableView()
     let searchInputTextField = SearchTextField()
@@ -22,6 +23,14 @@ final class SearchContentView: UIView {
         setupConstraints()
     }
     
+    func showLoadingIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    func hideLoadingIndicator() {
+        activityIndicator.stopAnimating()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -29,6 +38,7 @@ final class SearchContentView: UIView {
     private func addSubviews() {
         addSubview(resultsTableView)
         addSubview(searchInputTextField)
+        addSubview(activityIndicator)
     }
     
     private func setupStyling() {
@@ -41,6 +51,8 @@ final class SearchContentView: UIView {
         resultsTableView.rowHeight = singleCellHeight
         resultsTableView.backgroundColor = .green
         resultsTableView.separatorStyle = .none
+        
+        activityIndicator.activityIndicatorViewStyle = .gray
     }
     
     private func setupConstraints() {
@@ -52,6 +64,10 @@ final class SearchContentView: UIView {
         resultsTableView.snp.makeConstraints { make in
             make.top.equalTo(searchInputTextField.snp.bottom)
             make.left.right.bottom.equalToSuperview()
+        }
+        
+        activityIndicator.snp.makeConstraints { make in
+            make.edges.equalTo(resultsTableView)
         }
     }
 }

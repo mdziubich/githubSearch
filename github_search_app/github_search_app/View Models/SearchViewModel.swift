@@ -8,6 +8,13 @@
 
 import RxSwift
 
+enum LoadingState {
+    case initial
+    case loading
+    case content
+    case error(Error)
+}
+
 final class SearchViewModel {
     
     private lazy var searchService = GithubSearchService()
@@ -16,8 +23,8 @@ final class SearchViewModel {
     private let fetchedResultsPerRequest = 30
     
     var searchResultsViewModels = Variable<[SingleSearchResultViewModel]>([SingleSearchResultViewModel]())
-    var error = Variable<Error?>(nil)
     var canFetchMoreResults = false
+    var loadingState = Variable<LoadingState>(.initial)
     
     func searchForResults(with key: String?) {
         currentSearchKey = key ?? ""
@@ -28,14 +35,20 @@ final class SearchViewModel {
             clearSearchedUsersAndRepos()
             return
         }
+        loadingState.value = .loading
         
         searchService.searchForUsersAndRepo(by: textSearch,
                                             page: lastFetchedPage) { [weak self] (searchedUsers, searchedRepos, error) in
             guard let strongSelf = self else {
+                self?.loadingState.value = .content
                 return
             }
-            strongSelf.error.value = error
-            strongSelf.searchResultsViewModels.value = strongSelf.parseResultsToDisplay(from: searchedUsers, searchedRepos)
+            if let error = error {
+                self?.loadingState.value = .error(error)
+            } else {
+                self?.loadingState.value = .content
+                strongSelf.searchResultsViewModels.value = strongSelf.parseResultsToDisplay(from: searchedUsers, searchedRepos)
+            }
         }
     }
     
@@ -54,7 +67,10 @@ final class SearchViewModel {
             let resultsToDisplay = strongSelf.parseResultsToDisplay(from: searchedUsers, searchedRepos)
                                                 
             strongSelf.searchResultsViewModels.value.append(contentsOf: resultsToDisplay)
-            strongSelf.error.value = error
+            
+            if let error = error {
+                self?.loadingState.value = .error(error)
+            }
         }
     }
     
