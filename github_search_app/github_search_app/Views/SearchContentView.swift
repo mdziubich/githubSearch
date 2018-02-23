@@ -13,7 +13,7 @@ final class SearchContentView: UIView {
     private let singleCellHeight: CGFloat = 50.0
     
     let resultsTableView = UITableView()
-    let searchInputTextField = UITextField()
+    let searchInputTextField = SearchTextField()
     
     init() {
         super.init(frame: CGRect.zero)

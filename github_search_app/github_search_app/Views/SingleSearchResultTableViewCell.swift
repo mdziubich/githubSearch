@@ -11,8 +11,6 @@ import UIKit
 final class SingleSearchResultTableViewCell: UITableViewCell {
     
     private let titleLabel = UILabel()
-    private let leftMargin: CGFloat = 15.0
-    private let rightMargin: CGFloat = 15.0
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,8 +31,8 @@ final class SingleSearchResultTableViewCell: UITableViewCell {
         addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(leftMargin)
-            make.right.equalToSuperview().inset(rightMargin)
+            make.left.equalToSuperview().inset(GlobalLayoutElements.margin)
+            make.right.equalToSuperview().inset(GlobalLayoutElements.bigMargin)
             make.top.bottom.equalToSuperview()
         }
         

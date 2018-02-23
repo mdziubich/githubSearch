@@ -17,6 +17,8 @@
 		5A84476D203CB09500A869ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5A84476B203CB09500A869ED /* LaunchScreen.storyboard */; };
 		5A844778203CB09500A869ED /* github_search_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844777203CB09500A869ED /* github_search_appTests.swift */; };
 		5A9FC728203F691800DF1F22 /* CancellableCachedRequestsHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A9FC727203F691800DF1F22 /* CancellableCachedRequestsHandling.swift */; };
+		5AB80EA72040902E0049E505 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EA62040902E0049E505 /* SearchTextField.swift */; };
+		5AB80EAA204090CE0049E505 /* GlobalLayoutElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EA9204090CE0049E505 /* GlobalLayoutElements.swift */; };
 		5AC41A83203CBFD100AE2028 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */; };
 		5AC41A85203CC16400AE2028 /* GithubAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */; };
 		5AC41A87203CC26A00AE2028 /* GithubSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */; };
@@ -55,6 +57,8 @@
 		5A844777203CB09500A869ED /* github_search_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = github_search_appTests.swift; sourceTree = "<group>"; };
 		5A844779203CB09500A869ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A9FC727203F691800DF1F22 /* CancellableCachedRequestsHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancellableCachedRequestsHandling.swift; sourceTree = "<group>"; };
+		5AB80EA62040902E0049E505 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		5AB80EA9204090CE0049E505 /* GlobalLayoutElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalLayoutElements.swift; sourceTree = "<group>"; };
 		5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
 		5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIProvider.swift; sourceTree = "<group>"; };
 		5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchService.swift; sourceTree = "<group>"; };
@@ -117,13 +121,14 @@
 		5A844761203CB09500A869ED /* github_search_app */ = {
 			isa = PBXGroup;
 			children = (
-				5AC8FB6D203CB7A00098C3AB /* App */,
 				5AC8FB79203CBC9E0098C3AB /* API */,
-				5AC8FB6C203CB7980098C3AB /* Views */,
+				5AC8FB6D203CB7A00098C3AB /* App */,
+				5AC8FB76203CBBE80098C3AB /* Extensions */,
+				5AC8FB69203CB77E0098C3AB /* Models */,
+				5AB80EA8204090A00049E505 /* Shared */,
 				5AC8FB6B203CB78C0098C3AB /* View Controllers */,
 				5AC8FB6A203CB7840098C3AB /* View Models */,
-				5AC8FB69203CB77E0098C3AB /* Models */,
-				5AC8FB76203CBBE80098C3AB /* Extensions */,
+				5AC8FB6C203CB7980098C3AB /* Views */,
 				5A84476E203CB09500A869ED /* Info.plist */,
 				5A73AB10203F6F71005FA200 /* github_search_app-Bridging-Header.h */,
 			);
@@ -137,6 +142,14 @@
 				5A844779203CB09500A869ED /* Info.plist */,
 			);
 			path = github_search_appTests;
+			sourceTree = "<group>";
+		};
+		5AB80EA8204090A00049E505 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5AB80EA9204090CE0049E505 /* GlobalLayoutElements.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		5AC8FB69203CB77E0098C3AB /* Models */ = {
@@ -172,6 +185,7 @@
 			children = (
 				5AC8FB6E203CB82F0098C3AB /* SearchContentView.swift */,
 				5AC8FB74203CBB810098C3AB /* SingleSearchResultTableViewCell.swift */,
+				5AB80EA62040902E0049E505 /* SearchTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -394,12 +408,14 @@
 			files = (
 				5A20D641203F47B80098BBD8 /* RepoSearchResultModel.swift in Sources */,
 				5AC8FB75203CBB810098C3AB /* SingleSearchResultTableViewCell.swift in Sources */,
+				5AB80EA72040902E0049E505 /* SearchTextField.swift in Sources */,
 				5AC8FB6F203CB82F0098C3AB /* SearchContentView.swift in Sources */,
 				5AC8FB73203CBA630098C3AB /* SingleSearchResultViewModel.swift in Sources */,
 				5A20D63D203F47830098BBD8 /* SearchResultDisplayable.swift in Sources */,
 				5A844765203CB09500A869ED /* SearchViewController.swift in Sources */,
 				5AC41A85203CC16400AE2028 /* GithubAPIProvider.swift in Sources */,
 				5A9FC728203F691800DF1F22 /* CancellableCachedRequestsHandling.swift in Sources */,
+				5AB80EAA204090CE0049E505 /* GlobalLayoutElements.swift in Sources */,
 				5A20D63F203F47AA0098BBD8 /* UserSearchResultModel.swift in Sources */,
 				5AC8FB71203CBA260098C3AB /* SearchViewModel.swift in Sources */,
 				5AC8FB78203CBC020098C3AB /* UITableViewCell+ReuseId.swift in Sources */,
