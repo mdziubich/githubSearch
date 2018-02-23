@@ -6,6 +6,7 @@
 //  Copyright © 2018 Małgorzata Dziubich. All rights reserved.
 //
 
+import AlamofireImage
 import SnapKit
 import UIKit
 
@@ -28,6 +29,29 @@ class UserDetailsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setup(with viewModel: UserDetailsViewModel) {
+        usernameLabel.text = "username: " + viewModel.username
+        
+        guard let urlString = viewModel.avatarUrlString,
+            let avatarUrl = URL(string: urlString) else {
+            addErrorLabelToImage(message: "Avatar unavailable")
+            return
+        }
+        
+        avatarImage.af_setImage(withURL: avatarUrl,
+                                progressQueue: DispatchQueue.main,
+                                imageTransition: UIImageView.ImageTransition.crossDissolve(GlobalLayoutElements.animationDuration),
+                                runImageTransitionIfCached: true) { [weak self] response in
+                                    switch response.result {
+                                    case .success:
+                                        return
+                                    case .failure(let error):
+                                        self?.addErrorLabelToImage(message: error.localizedDescription)
+                                    }
+                                    
+        }
+    }
+    
     private func addSubviews() {
         [avatarImage, usernameLabel, numberOfStarsLabel, numberOfFollowersabel].forEach {
             addSubview($0)
@@ -41,7 +65,6 @@ class UserDetailsView: UIView {
             $0.textColor = .black
         }
         
-        usernameLabel.text = "Gosia"
         numberOfFollowersabel.text = "Number of followers: "
         numberOfStarsLabel.text = "Number of stars: "
         avatarImage.backgroundColor = .green
@@ -69,6 +92,20 @@ class UserDetailsView: UIView {
             make.centerX.equalToSuperview()
             make.bottom.equalTo(usernameLabel.snp.top).offset(-GlobalLayoutElements.bigMargin)
             make.width.height.equalTo(avatarWidthHeight)
+        }
+    }
+    
+    private func addErrorLabelToImage(message: String) {
+        let errorLabel = UILabel()
+        
+        addSubview(errorLabel)
+        errorLabel.numberOfLines = 0
+        errorLabel.textAlignment = .center
+        errorLabel.font = UIFont.systemFont(ofSize: 17)
+        errorLabel.textColor = .black
+        errorLabel.text = message
+        errorLabel.snp.makeConstraints { make in
+            make.edges.equalTo(avatarImage)
         }
     }
 }

@@ -10,9 +10,11 @@ import Foundation
 
 class UserDetailsViewModel {
     
-    private let userName: String
+    let username: String
+    let avatarUrlString: String?
     
     init(from viewModel: SingleSearchResultViewModel) {
-        userName = viewModel.title
+        username = viewModel.title
+        avatarUrlString = viewModel.avatarUrlString
     }
 }

@@ -11,7 +11,16 @@ import UIKit
 class UserDetailsViewController: UIViewController {
 
     private lazy var contentView = UserDetailsView()
-    private let viewModel = UserDetailsViewModel()
+    private let viewModel: UserDetailsViewModel
+    
+    init(viewModel: UserDetailsViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = contentView
@@ -21,6 +30,7 @@ class UserDetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         setupBackButton()
+        contentView.setup(with: viewModel)
     }
     
     @objc func goBack() {

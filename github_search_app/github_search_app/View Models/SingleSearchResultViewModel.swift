@@ -13,11 +13,13 @@ final class SingleSearchResultViewModel {
     let id: Int
     let title: String
     let isSelectable: Bool
+    let avatarUrlString: String?
     
     init(from model: SearchResultDisplayable) {
         id              = model.id
         title           = model.name
         isSelectable    = model.type.hasDetailsToDisplay
+        avatarUrlString = model.type.avatarUrlString
     }
     
     static func searchResultViewModels(from models: [SearchResultDisplayable]) -> [SingleSearchResultViewModel] {

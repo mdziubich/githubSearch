@@ -121,11 +121,10 @@ extension SearchViewController: UITableViewDelegate {
         guard cellViewModel.isSelectable else {
             return
         }
-        let userDetailsViewController = UserDetailsViewController()
-        let nv = UINavigationController()
-        nv.viewControllers = [userDetailsViewController]
+        let userDetailViewModel = UserDetailsViewModel(from: cellViewModel)
+        let userDetailsViewController = UserDetailsViewController(viewModel: userDetailViewModel)
+        let navigationController = UINavigationController(rootViewController: userDetailsViewController)
         
-        
-        navigationController?.present(nv, animated: true, completion: nil)
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
 }

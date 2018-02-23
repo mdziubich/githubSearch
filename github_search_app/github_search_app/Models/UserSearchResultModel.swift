@@ -22,16 +22,11 @@ final class UserSearchResult: ImmutableMappable, SearchResultDisplayable {
     
     let id: Int
     let name: String
-    let avatarUrl: String?
-    let followersUrl: String?
-    let starredUrl: String?
-    let type: ResultType = .user
+    let type: ResultType
     
     init(map: Map) throws {
         id              = try map.value("id")
         name            = try map.value("login")
-        avatarUrl       = try? map.value("avatar_url")
-        followersUrl    = try? map.value("followers_url")
-        starredUrl      = try? map.value("starred_url")
+        type            = .user(avaratUrl: try? map.value("avatar_url"))
     }
 }

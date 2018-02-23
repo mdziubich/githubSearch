@@ -9,11 +9,23 @@
 import Foundation
 
 enum ResultType {
-    case user
+    case user(avaratUrl: String?)
     case repo
     
     var hasDetailsToDisplay: Bool {
-        return self == .user
+        switch self {
+        case .user: return true
+        case .repo: return false
+        }
+    }
+    
+    var avatarUrlString: String? {
+        switch self {
+        case .user(let avaratUrl):
+            return avaratUrl
+        case .repo:
+            return nil
+        }
     }
 }
 
