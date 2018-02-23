@@ -11,8 +11,8 @@ import Moya
 final class GithubAPIProvider<T: TargetType>: MoyaProvider<T> {
     
     init() {
-//        super.init(plugins: [])
-        super.init(plugins: [NetworkLoggerPlugin(verbose: true)])
+        super.init(plugins: [])
+//        super.init(plugins: [NetworkLoggerPlugin(verbose: true)])
     }
     
     func request(target: T,
@@ -26,7 +26,12 @@ final class GithubAPIProvider<T: TargetType>: MoyaProvider<T> {
                     successCallback(nil)
                     return
                 }
-                successCallback(responseDict)
+                if let errorMessage = responseDict?["message"] as? String {
+                    let error = NSError(domain: errorMessage, code: 0, userInfo: nil)
+                    errorCallback(error)
+                } else {
+                    successCallback(responseDict)
+                }
             case .failure(let moyaError):
                 self.handleError(moyaError, error: errorCallback)
             }

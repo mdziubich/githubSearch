@@ -28,7 +28,7 @@ final class GithubSearchService: CancellableCachedRequestsHandling {
         //first cancell previous made requests
         cancelCachedRequests()
         
-        let usersSearchRequest = apiProvider.request(target: .searchUser(key: key, page: page), success: {  responseDict in
+        let usersSearchRequest = apiProvider.request(target: .searchUser(key: key, page: page), success: { responseDict in
             guard let responseDict = responseDict else {
                 return
             }
@@ -39,7 +39,7 @@ final class GithubSearchService: CancellableCachedRequestsHandling {
             completion(nil, nil, error)
         })
         
-        cachedRequests["users:\(key), page: \(page)"] = usersSearchRequest
+        cachedRequests["users:\(key)"] = usersSearchRequest
     }
     
     private func searchForRepos(by key: String,

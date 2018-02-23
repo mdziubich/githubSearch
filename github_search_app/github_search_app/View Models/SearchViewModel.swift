@@ -41,6 +41,7 @@ final class SearchViewModel {
     
     func fetchMoreResults() {
         guard !currentSearchKey.isEmpty else {
+            canFetchMoreResults = false
             return
         }
         lastFetchedPage += 1
@@ -84,6 +85,7 @@ final class SearchViewModel {
     }
     
     private func clearSearchedUsersAndRepos() {
+        canFetchMoreResults = false
         searchResultsViewModels.value.removeAll()
     }
 }
