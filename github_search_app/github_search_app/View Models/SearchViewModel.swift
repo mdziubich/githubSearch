@@ -86,6 +86,7 @@ final class SearchViewModel {
     
     private func clearSearchedUsersAndRepos() {
         canFetchMoreResults = false
+        searchService.cancelCachedRequests()
         searchResultsViewModels.value.removeAll()
     }
 }

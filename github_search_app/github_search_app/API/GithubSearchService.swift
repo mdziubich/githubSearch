@@ -28,13 +28,25 @@ final class GithubSearchService: CancellableCachedRequestsHandling {
         //first cancell previous made requests
         cancelCachedRequests()
         
-        let usersSearchRequest = apiProvider.request(target: .searchUser(key: key, page: page), success: { responseDict in
+        let usersSearchRequest = apiProvider.request(target: .searchUser(key: key, page: page), success: { [searchedKey = key] responseDict in
             guard let responseDict = responseDict else {
+                completion(nil, nil, nil)
                 return
             }
-            let users = try? SearchedUsers(JSON: responseDict)
             
-            self.searchForRepos(by: key, page: page, foundUsers: users, completion: completion)
+            /*
+             first check if request wasn't already cancelled and if it was cancelled the do not make any further
+             requests and give nil in completion because next request was already made for the next searchKey
+            */
+            if self.cachedRequests["users:\(searchedKey)"] != nil {
+                //it wasn't cancelled
+                let users = try? SearchedUsers(JSON: responseDict)
+                
+                self.searchForRepos(by: key, page: page, foundUsers: users, completion: completion)
+            } else {
+                completion(nil, nil, nil)
+            }
+            
         }, error: { error in
             completion(nil, nil, error)
         })
@@ -46,13 +58,24 @@ final class GithubSearchService: CancellableCachedRequestsHandling {
                                 page: Int,
                                 foundUsers: SearchedUsers?,
                                 completion: @escaping (SearchedUsers?, SearchedRepos?, Error?) -> Void) {
-        let repoSearchRequest = apiProvider.request(target: .searchRepo(key: key, page: page), success: { responseDict in
+        let repoSearchRequest = apiProvider.request(target: .searchRepo(key: key, page: page), success: { [searchedKey = key] responseDict in
             guard let responseDict = responseDict else {
+                completion(foundUsers, nil, nil)
                 return
             }
-            let repos = try? SearchedRepos(JSON: responseDict)
             
-            completion(foundUsers, repos, nil)
+            /*
+             first check if request wasn't already cancelled and if it was cancelled the do not make any further
+             requests and give nil in completion because next request was already made for the next searchKey
+             */
+            if self.cachedRequests["repos:\(searchedKey)"] != nil {
+                //it wasn't cancelled
+                let repos = try? SearchedRepos(JSON: responseDict)
+                
+                completion(foundUsers, repos, nil)
+            } else {
+                completion(nil, nil, nil)
+            }
         }, error: { error in
             completion(nil, nil, error)
         })

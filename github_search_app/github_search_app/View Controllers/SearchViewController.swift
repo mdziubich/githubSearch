@@ -15,6 +15,7 @@ final class SearchViewController: UIViewController {
     private lazy var contentView = SearchContentView()
     private lazy var viewModel = SearchViewModel()
     private let disposeBag = DisposeBag()
+    private var shouldFetchResults = true
     
     override func loadView() {
         view = contentView
@@ -48,7 +49,10 @@ final class SearchViewController: UIViewController {
     private func setupObservables() {
         contentView.searchInputTextField.rx.text.asObservable()
             .subscribe(onNext: { [weak self] (keyToSearch) in
-               self?.viewModel.searchForResults(with: keyToSearch)
+                if let shouldFetchResults = self?.shouldFetchResults,
+                    shouldFetchResults {
+                    self?.viewModel.searchForResults(with: keyToSearch)
+                }
             })
             .disposed(by: disposeBag)
         
@@ -70,10 +74,13 @@ final class SearchViewController: UIViewController {
         }
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] _ in
+            self?.shouldFetchResults = true
             alert.dismiss(animated: true, completion: nil)
         }))
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: { [weak self] in
+            self?.shouldFetchResults = false
+        })
     }
 }
 
