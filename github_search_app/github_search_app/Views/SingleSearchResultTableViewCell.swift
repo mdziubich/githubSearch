@@ -11,7 +11,8 @@ import UIKit
 final class SingleSearchResultTableViewCell: UITableViewCell {
     
     private let titleLabel = UILabel()
-    private let margin: CGFloat = 15.0
+    private let leftMargin: CGFloat = 15.0
+    private let rightMargin: CGFloat = 15.0
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,7 +24,7 @@ final class SingleSearchResultTableViewCell: UITableViewCell {
     }
     
     func setup(with viewModel: SingleSearchResultViewModel) {
-        titleLabel.text = viewModel.title
+        titleLabel.text = "id: \(viewModel.id)" + " - " + viewModel.title
         selectionStyle = viewModel.isSelectable ? .gray : .none
         accessoryType = viewModel.isSelectable ? .disclosureIndicator : .none
     }
@@ -32,14 +33,15 @@ final class SingleSearchResultTableViewCell: UITableViewCell {
         addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(margin)
+            make.left.equalToSuperview().inset(leftMargin)
+            make.right.equalToSuperview().inset(rightMargin)
             make.top.bottom.equalToSuperview()
         }
         
-        titleLabel.numberOfLines = 2
         titleLabel.adjustsFontSizeToFitWidth = false
         titleLabel.font = UIFont.systemFont(ofSize: 17)
         titleLabel.textColor = .black
+        titleLabel.lineBreakMode = .byTruncatingTail
         
         backgroundColor = .yellow
     }

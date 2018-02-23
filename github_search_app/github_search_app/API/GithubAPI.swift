@@ -10,8 +10,8 @@ import Foundation
 import Moya
 
 enum GithubAPI: TargetType {
-    case searchUser(key: String)
-    case searchRepo(key: String)
+    case searchUser(key: String, page: Int)
+    case searchRepo(key: String, page: Int)
     
     var baseURL: URL {
         return URL(string: "https://api.github.com")!
@@ -34,10 +34,11 @@ enum GithubAPI: TargetType {
     
     var parameters: [String: Any]? {
         switch self {
-        case .searchUser(let searchedTerm),
-             .searchRepo(let searchedTerm):
+        case .searchUser(let searchedTerm, let page),
+             .searchRepo(let searchedTerm, let page):
             return ["q": searchedTerm,
-                    "order": "asc"]
+                    "order": "asc",
+                    "page": page]
         }
     }
     

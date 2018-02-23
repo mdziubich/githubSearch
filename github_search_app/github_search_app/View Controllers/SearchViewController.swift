@@ -37,6 +37,12 @@ final class SearchViewController: UIViewController {
         contentView.resultsTableView.dataSource = self
         contentView.resultsTableView.register(SingleSearchResultTableViewCell.self,
                                               forCellReuseIdentifier: SingleSearchResultTableViewCell.reuseId)
+        contentView.resultsTableView.addInfiniteScroll { [weak self] (_) -> Void in
+            self?.viewModel.fetchMoreResults()
+        }
+        contentView.resultsTableView.setShouldShowInfiniteScrollHandler { [weak self] _ in
+            return self?.viewModel.canFetchMoreResults ?? false
+        }
     }
     
     private func setupObservables() {
@@ -49,6 +55,7 @@ final class SearchViewController: UIViewController {
         viewModel.searchResultsViewModels.asObservable()
             .subscribe(onNext: { [weak self] _ in
                 self?.contentView.resultsTableView.reloadData()
+                self?.contentView.resultsTableView.finishInfiniteScroll(completion: nil)
             })
             .disposed(by: disposeBag)
         
