@@ -11,6 +11,7 @@ import UIKit
 class UserDetailsViewController: UIViewController {
 
     private lazy var contentView = UserDetailsView()
+    private let viewModel = UserDetailsViewModel()
     
     override func loadView() {
         view = contentView

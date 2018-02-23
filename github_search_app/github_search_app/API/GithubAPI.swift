@@ -12,6 +12,8 @@ import Moya
 enum GithubAPI: TargetType {
     case searchUser(key: String, page: Int)
     case searchRepo(key: String, page: Int)
+    case userStarredRepositories(username: String)
+    case userFollowers(username: String)
     
     var baseURL: URL {
         return URL(string: "https://api.github.com")!
@@ -21,6 +23,8 @@ enum GithubAPI: TargetType {
         switch self {
         case .searchUser: return "search/users"
         case .searchRepo: return "search/repositories"
+        case .userStarredRepositories(let username): return "users/\(username)/starred"
+        case .userFollowers(let username): return "users/\(username)/followers"
         }
     }
     
@@ -39,6 +43,8 @@ enum GithubAPI: TargetType {
             return ["q": searchedTerm,
                     "order": "asc",
                     "page": page]
+        default:
+            return nil
         }
     }
     

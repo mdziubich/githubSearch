@@ -21,6 +21,8 @@
 		5AB80EAA204090CE0049E505 /* GlobalLayoutElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EA9204090CE0049E505 /* GlobalLayoutElements.swift */; };
 		5AB80EAC2040A22A0049E505 /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EAB2040A22A0049E505 /* UserDetailsViewController.swift */; };
 		5AB80EAE2040A2F40049E505 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EAD2040A2F40049E505 /* UserDetailsView.swift */; };
+		5AB80EB02040AE330049E505 /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EAF2040AE330049E505 /* UserDetailsViewModel.swift */; };
+		5AB80EB22040C1AE0049E505 /* GithubUserDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AB80EB12040C1AE0049E505 /* GithubUserDetailsService.swift */; };
 		5AC41A83203CBFD100AE2028 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */; };
 		5AC41A85203CC16400AE2028 /* GithubAPIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */; };
 		5AC41A87203CC26A00AE2028 /* GithubSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */; };
@@ -63,6 +65,8 @@
 		5AB80EA9204090CE0049E505 /* GlobalLayoutElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalLayoutElements.swift; sourceTree = "<group>"; };
 		5AB80EAB2040A22A0049E505 /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		5AB80EAD2040A2F40049E505 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
+		5AB80EAF2040AE330049E505 /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
+		5AB80EB12040C1AE0049E505 /* GithubUserDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUserDetailsService.swift; sourceTree = "<group>"; };
 		5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
 		5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAPIProvider.swift; sourceTree = "<group>"; };
 		5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchService.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				5AC8FB70203CBA260098C3AB /* SearchViewModel.swift */,
 				5AC8FB72203CBA630098C3AB /* SingleSearchResultViewModel.swift */,
 				5A9FC727203F691800DF1F22 /* CancellableCachedRequestsHandling.swift */,
+				5AB80EAF2040AE330049E505 /* UserDetailsViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				5A1741F7203CBDFB008C3A65 /* GithubAPI.swift */,
 				5AC41A84203CC16400AE2028 /* GithubAPIProvider.swift */,
 				5AC41A86203CC26A00AE2028 /* GithubSearchService.swift */,
+				5AB80EB12040C1AE0049E505 /* GithubUserDetailsService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -417,7 +423,9 @@
 				5AB80EA72040902E0049E505 /* SearchTextField.swift in Sources */,
 				5AC8FB6F203CB82F0098C3AB /* SearchContentView.swift in Sources */,
 				5AC8FB73203CBA630098C3AB /* SingleSearchResultViewModel.swift in Sources */,
+				5AB80EB22040C1AE0049E505 /* GithubUserDetailsService.swift in Sources */,
 				5A20D63D203F47830098BBD8 /* SearchResultDisplayable.swift in Sources */,
+				5AB80EB02040AE330049E505 /* UserDetailsViewModel.swift in Sources */,
 				5A844765203CB09500A869ED /* SearchViewController.swift in Sources */,
 				5AB80EAE2040A2F40049E505 /* UserDetailsView.swift in Sources */,
 				5AC41A85203CC16400AE2028 /* GithubAPIProvider.swift in Sources */,
