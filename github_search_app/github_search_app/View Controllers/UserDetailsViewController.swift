@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 
 class UserDetailsViewController: UIViewController {
 
     private lazy var contentView = UserDetailsView()
     private let viewModel: UserDetailsViewModel
+    private let disposeBag = DisposeBag()
     
     init(viewModel: UserDetailsViewModel) {
         self.viewModel = viewModel
@@ -30,7 +33,9 @@ class UserDetailsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         setupBackButton()
+        setupObservables()
         contentView.setup(with: viewModel)
+        viewModel.fetchStarredReposAndFollowers()
     }
     
     @objc func goBack() {
@@ -40,5 +45,35 @@ class UserDetailsViewController: UIViewController {
     private func setupBackButton() {
         let backButton = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(UserDetailsViewController.goBack))
         navigationItem.rightBarButtonItem = backButton
+    }
+    
+    private func setupObservables() {
+        viewModel.numberOfStars
+            .bind(to: contentView.numberOfStarsLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.numberOfFollowers
+            .bind(to: contentView.numberOfFollowersLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.loadingState
+            .subscribe(onNext: handleLoading)
+            .disposed(by: disposeBag)
+    }
+    
+    private func handleLoading(state: LoadingState) {
+        switch state {
+        case .loading:
+            return
+        case .content:
+            return
+        case .error(let error):
+            handleError(error)
+        }
+        
+    }
+    
+    private func handleError(_ error: Error) {
+        print(error.localizedDescription)
     }
 }

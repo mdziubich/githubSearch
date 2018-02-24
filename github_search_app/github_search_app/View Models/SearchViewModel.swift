@@ -9,7 +9,6 @@
 import RxSwift
 
 enum LoadingState {
-    case initial
     case loading
     case content
     case error(Error)
@@ -24,7 +23,7 @@ final class SearchViewModel {
     
     var searchResultsViewModels = Variable<[SingleSearchResultViewModel]>([SingleSearchResultViewModel]())
     var canFetchMoreResults = false
-    var loadingState = Variable<LoadingState>(.initial)
+    var loadingState = PublishSubject<LoadingState>()
     
     func searchForResults(with key: String?) {
         currentSearchKey = key ?? ""
@@ -35,18 +34,18 @@ final class SearchViewModel {
             clearSearchedUsersAndRepos()
             return
         }
-        loadingState.value = .loading
+        loadingState.onNext(.loading)
         
         searchService.searchForUsersAndRepo(by: textSearch,
                                             page: lastFetchedPage) { [weak self] (searchedUsers, searchedRepos, error) in
             guard let strongSelf = self else {
-                self?.loadingState.value = .content
+                self?.loadingState.onNext(.content)
                 return
             }
             if let error = error {
-                self?.loadingState.value = .error(error)
+                self?.loadingState.onNext(.error(error))
             } else {
-                self?.loadingState.value = .content
+                self?.loadingState.onNext(.content)
                 strongSelf.searchResultsViewModels.value = strongSelf.parseResultsToDisplay(from: searchedUsers, searchedRepos)
             }
         }
@@ -69,7 +68,7 @@ final class SearchViewModel {
             strongSelf.searchResultsViewModels.value.append(contentsOf: resultsToDisplay)
             
             if let error = error {
-                self?.loadingState.value = .error(error)
+                self?.loadingState.onNext(.error(error))
             }
         }
     }

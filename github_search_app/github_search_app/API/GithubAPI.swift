@@ -9,6 +9,10 @@
 import Foundation
 import Moya
 
+struct GithubAPIConsts {
+    static let resultsKey = "result"
+}
+
 enum GithubAPI: TargetType {
     case searchUser(key: String, page: Int)
     case searchRepo(key: String, page: Int)

@@ -71,8 +71,6 @@ final class SearchViewController: UIViewController {
     
     private func handleLoading(state: LoadingState) {
         switch state {
-        case .initial:
-            return
         case .loading:
             contentView.showLoadingIndicator()
         case .content:

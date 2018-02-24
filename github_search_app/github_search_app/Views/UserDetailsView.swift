@@ -15,8 +15,9 @@ class UserDetailsView: UIView {
     private let avatarWidthHeight: CGFloat = 200
     private let avatarImage = UIImageView()
     private let usernameLabel = UILabel()
-    private let numberOfStarsLabel = UILabel()
-    private let numberOfFollowersabel = UILabel()
+    
+    let numberOfStarsLabel = UILabel()
+    let numberOfFollowersLabel = UILabel()
     
     init() {
         super.init(frame: CGRect.zero)
@@ -53,20 +54,18 @@ class UserDetailsView: UIView {
     }
     
     private func addSubviews() {
-        [avatarImage, usernameLabel, numberOfStarsLabel, numberOfFollowersabel].forEach {
+        [avatarImage, usernameLabel, numberOfStarsLabel, numberOfFollowersLabel].forEach {
             addSubview($0)
         }
     }
     
     private func setupStyling() {
-        [usernameLabel, numberOfFollowersabel, numberOfStarsLabel].forEach {
+        [usernameLabel, numberOfFollowersLabel, numberOfStarsLabel].forEach {
             $0.textAlignment = .center
             $0.font = UIFont.systemFont(ofSize: 17)
             $0.textColor = .black
         }
         
-        numberOfFollowersabel.text = "Number of followers: "
-        numberOfStarsLabel.text = "Number of stars: "
         avatarImage.backgroundColor = .green
         avatarImage.clipsToBounds = true
         avatarImage.contentMode = .scaleAspectFill
@@ -83,7 +82,7 @@ class UserDetailsView: UIView {
             make.top.equalTo(usernameLabel.snp.bottom).offset(GlobalLayoutElements.bigMargin)
         }
         
-        numberOfFollowersabel.snp.makeConstraints { make in
+        numberOfFollowersLabel.snp.makeConstraints { make in
             make.left.right.equalTo(usernameLabel)
             make.top.equalTo(numberOfStarsLabel.snp.bottom).offset(GlobalLayoutElements.bigMargin)
         }
