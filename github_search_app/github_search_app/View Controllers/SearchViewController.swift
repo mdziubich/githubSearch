@@ -28,6 +28,11 @@ final class SearchViewController: BaseViewController {
         setupObservables()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        unselectSelectedCell()
+    }
+    
     private func setupNavigatinBar() {
         title = "Main"
         extendedLayoutIncludesOpaqueBars = false
@@ -87,6 +92,12 @@ final class SearchViewController: BaseViewController {
         }, actionHandler: {  [weak self] in
             self?.shouldFetchResults = true
         })
+    }
+    
+    private func unselectSelectedCell() {
+        if let selectionIndexPath = contentView.resultsTableView.indexPathForSelectedRow {
+            contentView.resultsTableView.deselectRow(at: selectionIndexPath, animated: true)
+        }
     }
 }
 

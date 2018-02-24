@@ -40,7 +40,5 @@ final class SingleSearchResultTableViewCell: UITableViewCell {
         titleLabel.font = UIFont.systemFont(ofSize: 17)
         titleLabel.textColor = .black
         titleLabel.lineBreakMode = .byTruncatingTail
-        
-        backgroundColor = .yellow
     }
 }

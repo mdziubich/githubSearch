@@ -12,6 +12,7 @@ class GlobalLayoutElements {
     
     static let margin: CGFloat = 15.0
     static let bigMargin: CGFloat = 30.0
+    static let separatorHeight: CGFloat = 1.0
     
     static let animationDuration: Double = 0.3
 }

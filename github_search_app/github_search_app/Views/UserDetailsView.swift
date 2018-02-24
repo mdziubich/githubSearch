@@ -62,6 +62,7 @@ class UserDetailsView: LoadableView {
     
     override func setupStyling() {
         super.setupStyling()
+        backgroundColor = .gray
         
         [usernameLabel, numberOfFollowersLabel, numberOfStarsLabel].forEach {
             $0.textAlignment = .center
@@ -69,7 +70,7 @@ class UserDetailsView: LoadableView {
             $0.textColor = .black
         }
         
-        avatarImage.backgroundColor = .green
+        avatarImage.backgroundColor = .white
         avatarImage.clipsToBounds = true
         avatarImage.contentMode = .scaleAspectFill
     }

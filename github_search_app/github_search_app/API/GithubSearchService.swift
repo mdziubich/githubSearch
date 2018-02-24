@@ -24,7 +24,7 @@ final class GithubSearchService: CancellableCachedRequestsHandling {
      In rare situations when a query exceeds the time limit,
      the API returns all matches that were found prior to the timeout.
     */
-    func searchForUsersAndRepo(by key: String, page: Int, completion: @escaping (SearchedUsers?, SearchedRepos?, Error?) -> Void) {
+    func searchForUsersAndRepo(by key: String, page: Int, completion: @escaping (SearchedUsers?, SearchedRepos?, MoyaError?) -> Void) {
         //first cancell previous made requests
         cancelCachedRequests()
         
@@ -57,7 +57,7 @@ final class GithubSearchService: CancellableCachedRequestsHandling {
     private func searchForRepos(by key: String,
                                 page: Int,
                                 foundUsers: SearchedUsers?,
-                                completion: @escaping (SearchedUsers?, SearchedRepos?, Error?) -> Void) {
+                                completion: @escaping (SearchedUsers?, SearchedRepos?, MoyaError?) -> Void) {
         let repoSearchRequest = apiProvider.request(target: .searchRepo(key: key, page: page), success: { [searchedKey = key] responseDict in
             guard let responseDict = responseDict else {
                 completion(foundUsers, nil, nil)

@@ -39,7 +39,6 @@ final class GithubUserDetailsService {
         
         group.notify(queue: .main) {
             completion(numberOfStars, numberOfFollowers, responseError)
-            print("both done")
         }
     }
     

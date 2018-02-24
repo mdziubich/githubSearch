@@ -6,6 +6,7 @@
 //  Copyright © 2018 Małgorzata Dziubich. All rights reserved.
 //
 
+import Moya
 import RxSwift
 
 enum LoadingState {
@@ -31,6 +32,7 @@ final class SearchViewModel {
         
         guard let textSearch = key,
             !textSearch.isEmpty else {
+            loadingState.onNext(.content)
             clearSearchedUsersAndRepos()
             return
         }
@@ -43,7 +45,7 @@ final class SearchViewModel {
                 return
             }
             if let error = error {
-                self?.loadingState.onNext(.error(error))
+                self?.handleError(error)
             } else {
                 self?.loadingState.onNext(.content)
                 strongSelf.searchResultsViewModels.value = strongSelf.parseResultsToDisplay(from: searchedUsers, searchedRepos)
@@ -68,7 +70,7 @@ final class SearchViewModel {
             strongSelf.searchResultsViewModels.value.append(contentsOf: resultsToDisplay)
             
             if let error = error {
-                self?.loadingState.onNext(.error(error))
+                self?.handleError(error)
             }
         }
     }
@@ -103,5 +105,12 @@ final class SearchViewModel {
         canFetchMoreResults = false
         searchService.cancelCachedRequests()
         searchResultsViewModels.value.removeAll()
+    }
+    
+    private func handleError(_ error: MoyaError) {
+        guard !error.isCancelled else {
+            return
+        }
+        loadingState.onNext(.error(error))
     }
 }

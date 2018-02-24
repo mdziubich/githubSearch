@@ -31,7 +31,6 @@ class UserDetailsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .red
         setupBackButton()
         setupObservables()
         contentView.setup(with: viewModel)

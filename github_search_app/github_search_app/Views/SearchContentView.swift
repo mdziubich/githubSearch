@@ -11,6 +11,7 @@ import SnapKit
 final class SearchContentView: LoadableView {
     
     private let singleCellHeight: CGFloat = 50.0
+    private let separatorView = UIView()
     
     let resultsTableView = UITableView()
     let searchInputTextField = SearchTextField()
@@ -29,6 +30,7 @@ final class SearchContentView: LoadableView {
     override func addSubviews() {
         addSubview(resultsTableView)
         addSubview(searchInputTextField)
+        addSubview(separatorView)
         super.addSubviews()
     }
     
@@ -42,8 +44,10 @@ final class SearchContentView: LoadableView {
         searchInputTextField.autocapitalizationType = .none
         
         resultsTableView.rowHeight = singleCellHeight
-        resultsTableView.backgroundColor = .green
         resultsTableView.separatorStyle = .none
+        resultsTableView.backgroundColor = .gray
+        
+        separatorView.backgroundColor = .black
     }
     
     override func setupConstraints() {
@@ -53,8 +57,14 @@ final class SearchContentView: LoadableView {
             make.height.equalTo(singleCellHeight)
         }
         
-        resultsTableView.snp.makeConstraints { make in
+        separatorView.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
             make.top.equalTo(searchInputTextField.snp.bottom)
+            make.height.equalTo(GlobalLayoutElements.separatorHeight)
+        }
+        
+        resultsTableView.snp.makeConstraints { make in
+            make.top.equalTo(separatorView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
         

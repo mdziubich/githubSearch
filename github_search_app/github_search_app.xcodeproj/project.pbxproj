@@ -11,6 +11,7 @@
 		5A20D63D203F47830098BBD8 /* SearchResultDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D63C203F47830098BBD8 /* SearchResultDisplayable.swift */; };
 		5A20D63F203F47AA0098BBD8 /* UserSearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D63E203F47AA0098BBD8 /* UserSearchResultModel.swift */; };
 		5A20D641203F47B80098BBD8 /* RepoSearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D640203F47B80098BBD8 /* RepoSearchResultModel.swift */; };
+		5A3F77852041F5CD00F169FA /* MoyaError+Cancelled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F77842041F5CD00F169FA /* MoyaError+Cancelled.swift */; };
 		5A48424F2041DCB700706CAE /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A48424E2041DCB700706CAE /* LoadableView.swift */; };
 		5A496C992041E100001BEF61 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A496C982041E100001BEF61 /* BaseViewController.swift */; };
 		5A844763203CB09500A869ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844762203CB09500A869ED /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		5A20D63C203F47830098BBD8 /* SearchResultDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDisplayable.swift; sourceTree = "<group>"; };
 		5A20D63E203F47AA0098BBD8 /* UserSearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchResultModel.swift; sourceTree = "<group>"; };
 		5A20D640203F47B80098BBD8 /* RepoSearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSearchResultModel.swift; sourceTree = "<group>"; };
+		5A3F77842041F5CD00F169FA /* MoyaError+Cancelled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoyaError+Cancelled.swift"; sourceTree = "<group>"; };
 		5A48424E2041DCB700706CAE /* LoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableView.swift; sourceTree = "<group>"; };
 		5A496C982041E100001BEF61 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5A73AB10203F6F71005FA200 /* github_search_app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "github_search_app-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			children = (
 				5AC8FB77203CBC020098C3AB /* UITableViewCell+ReuseId.swift */,
 				5AC41A82203CBFD100AE2028 /* NSObject+ClassName.swift */,
+				5A3F77842041F5CD00F169FA /* MoyaError+Cancelled.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -426,6 +429,7 @@
 			files = (
 				5A20D641203F47B80098BBD8 /* RepoSearchResultModel.swift in Sources */,
 				5AC8FB75203CBB810098C3AB /* SingleSearchResultTableViewCell.swift in Sources */,
+				5A3F77852041F5CD00F169FA /* MoyaError+Cancelled.swift in Sources */,
 				5AB80EA72040902E0049E505 /* SearchTextField.swift in Sources */,
 				5A496C992041E100001BEF61 /* BaseViewController.swift in Sources */,
 				5AC8FB6F203CB82F0098C3AB /* SearchContentView.swift in Sources */,
