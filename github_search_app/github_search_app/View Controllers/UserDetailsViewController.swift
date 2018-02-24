@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class UserDetailsViewController: UIViewController {
+class UserDetailsViewController: BaseViewController {
 
     private lazy var contentView = UserDetailsView()
     private let viewModel: UserDetailsViewModel
@@ -69,12 +69,7 @@ class UserDetailsViewController: UIViewController {
             contentView.hideLoadingIndicator()
         case .error(let error):
             contentView.hideLoadingIndicator()
-            handleError(error)
+            handleError(error, presentCompletion: nil, actionHandler: nil)
         }
-        
-    }
-    
-    private func handleError(_ error: Error) {
-        print(error.localizedDescription)
     }
 }

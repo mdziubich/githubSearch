@@ -111,6 +111,7 @@ class UserDetailsView: LoadableView {
         errorLabel.font = UIFont.systemFont(ofSize: 17)
         errorLabel.textColor = .black
         errorLabel.text = message
+        
         errorLabel.snp.makeConstraints { make in
             make.edges.equalTo(avatarImage)
         }

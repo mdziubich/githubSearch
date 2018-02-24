@@ -12,6 +12,7 @@
 		5A20D63F203F47AA0098BBD8 /* UserSearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D63E203F47AA0098BBD8 /* UserSearchResultModel.swift */; };
 		5A20D641203F47B80098BBD8 /* RepoSearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A20D640203F47B80098BBD8 /* RepoSearchResultModel.swift */; };
 		5A48424F2041DCB700706CAE /* LoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A48424E2041DCB700706CAE /* LoadableView.swift */; };
+		5A496C992041E100001BEF61 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A496C982041E100001BEF61 /* BaseViewController.swift */; };
 		5A844763203CB09500A869ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844762203CB09500A869ED /* AppDelegate.swift */; };
 		5A844765203CB09500A869ED /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A844764203CB09500A869ED /* SearchViewController.swift */; };
 		5A84476A203CB09500A869ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A844769203CB09500A869ED /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		5A20D63E203F47AA0098BBD8 /* UserSearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchResultModel.swift; sourceTree = "<group>"; };
 		5A20D640203F47B80098BBD8 /* RepoSearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoSearchResultModel.swift; sourceTree = "<group>"; };
 		5A48424E2041DCB700706CAE /* LoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableView.swift; sourceTree = "<group>"; };
+		5A496C982041E100001BEF61 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		5A73AB10203F6F71005FA200 /* github_search_app-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "github_search_app-Bridging-Header.h"; sourceTree = "<group>"; };
 		5A84475F203CB09500A869ED /* github_search_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = github_search_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A844762203CB09500A869ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				5A844764203CB09500A869ED /* SearchViewController.swift */,
 				5AB80EAB2040A22A0049E505 /* UserDetailsViewController.swift */,
+				5A496C982041E100001BEF61 /* BaseViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				5A20D641203F47B80098BBD8 /* RepoSearchResultModel.swift in Sources */,
 				5AC8FB75203CBB810098C3AB /* SingleSearchResultTableViewCell.swift in Sources */,
 				5AB80EA72040902E0049E505 /* SearchTextField.swift in Sources */,
+				5A496C992041E100001BEF61 /* BaseViewController.swift in Sources */,
 				5AC8FB6F203CB82F0098C3AB /* SearchContentView.swift in Sources */,
 				5AC8FB73203CBA630098C3AB /* SingleSearchResultViewModel.swift in Sources */,
 				5AB80EB22040C1AE0049E505 /* GithubUserDetailsService.swift in Sources */,

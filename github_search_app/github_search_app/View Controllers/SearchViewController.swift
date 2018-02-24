@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: BaseViewController {
 
     private lazy var contentView = SearchContentView()
     private lazy var viewModel = SearchViewModel()
@@ -77,19 +77,15 @@ final class SearchViewController: UIViewController {
             contentView.hideLoadingIndicator()
         case .error(let error):
             contentView.hideLoadingIndicator()
-            handleError(error)
+            handleResponseError(error)
         }
     }
     
-    private func handleError(_ error: Error) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: { [weak self] _ in
-            self?.shouldFetchResults = true
-            alert.dismiss(animated: true, completion: nil)
-        }))
-        present(alert, animated: true, completion: { [weak self] in
+    private func handleResponseError(_ error: Error) {
+        handleError(error, presentCompletion: { [weak self] in
             self?.shouldFetchResults = false
+        }, actionHandler: {  [weak self] in
+            self?.shouldFetchResults = true
         })
     }
 }
