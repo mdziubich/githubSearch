@@ -64,10 +64,11 @@ class UserDetailsViewController: UIViewController {
     private func handleLoading(state: LoadingState) {
         switch state {
         case .loading:
-            return
+            contentView.showLoadingIndicator()
         case .content:
-            return
+            contentView.hideLoadingIndicator()
         case .error(let error):
+            contentView.hideLoadingIndicator()
             handleError(error)
         }
         

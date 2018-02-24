@@ -8,10 +8,9 @@
 
 import SnapKit
 
-final class SearchContentView: UIView {
+final class SearchContentView: LoadableView {
     
     private let singleCellHeight: CGFloat = 50.0
-    private let activityIndicator = UIActivityIndicatorView()
     
     let resultsTableView = UITableView()
     let searchInputTextField = SearchTextField()
@@ -23,25 +22,19 @@ final class SearchContentView: UIView {
         setupConstraints()
     }
     
-    func showLoadingIndicator() {
-        activityIndicator.startAnimating()
-    }
-    
-    func hideLoadingIndicator() {
-        activityIndicator.stopAnimating()
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addSubviews() {
+    override func addSubviews() {
         addSubview(resultsTableView)
         addSubview(searchInputTextField)
-        addSubview(activityIndicator)
+        super.addSubviews()
     }
     
-    private func setupStyling() {
+    override func setupStyling() {
+        super.setupStyling()
+        
         searchInputTextField.backgroundColor = .white
         searchInputTextField.placeholder = "Search for users and repos..."
         searchInputTextField.clearButtonMode = .whileEditing
@@ -51,11 +44,10 @@ final class SearchContentView: UIView {
         resultsTableView.rowHeight = singleCellHeight
         resultsTableView.backgroundColor = .green
         resultsTableView.separatorStyle = .none
-        
-        activityIndicator.activityIndicatorViewStyle = .gray
     }
     
-    private func setupConstraints() {
+    override func setupConstraints() {
+        super.setupConstraints()
         searchInputTextField.snp.makeConstraints { make in
             make.left.right.top.equalToSuperview()
             make.height.equalTo(singleCellHeight)
@@ -66,7 +58,7 @@ final class SearchContentView: UIView {
             make.left.right.bottom.equalToSuperview()
         }
         
-        activityIndicator.snp.makeConstraints { make in
+        loadingBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(resultsTableView)
         }
     }

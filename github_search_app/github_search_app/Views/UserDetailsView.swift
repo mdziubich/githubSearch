@@ -10,7 +10,7 @@ import AlamofireImage
 import SnapKit
 import UIKit
 
-class UserDetailsView: UIView {
+class UserDetailsView: LoadableView {
     
     private let avatarWidthHeight: CGFloat = 200
     private let avatarImage = UIImageView()
@@ -53,13 +53,16 @@ class UserDetailsView: UIView {
         }
     }
     
-    private func addSubviews() {
+    override func addSubviews() {
         [avatarImage, usernameLabel, numberOfStarsLabel, numberOfFollowersLabel].forEach {
             addSubview($0)
         }
+        super.addSubviews()
     }
     
-    private func setupStyling() {
+    override func setupStyling() {
+        super.setupStyling()
+        
         [usernameLabel, numberOfFollowersLabel, numberOfStarsLabel].forEach {
             $0.textAlignment = .center
             $0.font = UIFont.systemFont(ofSize: 17)
@@ -71,7 +74,8 @@ class UserDetailsView: UIView {
         avatarImage.contentMode = .scaleAspectFill
     }
     
-    private func setupConstraints() {
+    override func setupConstraints() {
+        super.setupConstraints()
         usernameLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.left.right.equalToSuperview().inset(GlobalLayoutElements.bigMargin)
@@ -91,6 +95,10 @@ class UserDetailsView: UIView {
             make.centerX.equalToSuperview()
             make.bottom.equalTo(usernameLabel.snp.top).offset(-GlobalLayoutElements.bigMargin)
             make.width.height.equalTo(avatarWidthHeight)
+        }
+        
+        loadingBackgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
